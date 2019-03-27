@@ -37,11 +37,11 @@ window.onload = init;
 //Sets up the event handlers for the page. 
 function init() {
       var calcButton = document.getElementsByClassName("calcButton");
-      //
+      //looping through the event objects and applying the click event to the objects.
       for (var i = 0; i < calcButton.length; i++) {
             calcButton[i].onclick = buttonClick;
       }
-      //
+      //running the calckeys function on the key down event and has the id of calcWindows. 
       document.getElementById("calcWindow").onkeydown = calcKeys;
 }
 //the purpose of the function is to change what appears in the cal window when the user clicks the buttons.
@@ -54,15 +54,19 @@ function buttonClick(e) {
       var buttonValue = e.target.value;
 
       switch (buttonValue) {
+            //this case will delete the contents on the page. 
             case "del":
                   calcValue = "";
                   break;
+                  //Will delete the last object to be entered in the calculator.
             case "bksp":
                   calcValue = eraseChar(calcValue);
                   break;
+                  //Will solve the situation that is being applied to the calculator. 
             case "enter":
                   calcValue += " = " + evalEq(calcValue, calcDecimal) + "\n";
                   break;
+                  //Copies the last equation that was pluged into the calculator.
             case "prev":
                   calcValue = lastEq(calcValue);
                   break;
@@ -83,12 +87,15 @@ function calcKeys(e) {
       var calcDecimal = document.getElementById("decimals").value;
 
       switch (e.key) {
+            //The case is for the keys objects and this will delete the values. 
             case "Delete":
                   calcValue = "";
                   break;
+                  //This event key will solve or put the situation togther (add).
             case "Enter":
                   calcValue += " = " + evalEq(calcValue, calcDecimal);
                   break;
+                  //bring up the last equation that was used. 
             case "ArrowUp":
                   calcValue = lastEq(calcWindow.value);
                   break;
